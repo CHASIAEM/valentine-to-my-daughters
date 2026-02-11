@@ -245,18 +245,55 @@
                 <p>Individually, you are my pride. Together, you are my world. My greatest blessing is being your mother. Watching you three grow together is my life's greatest joy.</p>
             </div>
             <h3 class="signature">Happy Valentine's Day, My Loves!</h3>
+            </div>
         </section>
 
-    </div>
-
+</div>
+    
     <footer>
         <p>Created with love by Mom &copy; 2026</p>
     </footer>
 
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="enlargedImg">
+
+    <script>
+        // Lightbox Logic
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("enlargedImg");
+        
+        document.querySelectorAll('img').forEach(img => {
+            img.onclick = function() {
+                if(this.classList.contains('modal-content')) return;
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        modal.onclick = function() { modal.style.display = "none"; }
+
+        // Floating Hearts Logic
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+
+        // Trigger hearts when user scrolls to summary
+        window.onscroll = function() {
+            const summaryPos = document.getElementById("summary").getBoundingClientRect().top;
+            if (summaryPos < window.innerHeight) {
+                createHeart();
+            }
+        };
+    </script>
 </body>
-
 </html>
-
 
 
 
