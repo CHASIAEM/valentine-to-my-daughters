@@ -47,7 +47,7 @@
             text-transform: uppercase;
         }
 
-        /* Main Content */
+        /* Content Layout */
         .container {
             padding: 20px;
             max-width: 1000px;
@@ -66,7 +66,7 @@
             margin-bottom: 30px;
         }
 
-        /* Photo Grid (8 Photos) */
+        /* Photo Grid & Zooming */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -74,18 +74,24 @@
             margin-bottom: 30px;
         }
 
-        .photo-grid img {
+        .photo-grid img, .family-member img {
             width: 100%;
             height: 280px;
             object-fit: cover;
             border: 2px solid var(--gold);
             border-radius: 4px;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            z-index: 1;
+            position: relative;
         }
 
-        .photo-grid img:hover {
-            transform: scale(1.02);
-            border-color: var(--soft-cream);
+        /* Zoom effect in-place */
+        .enlarged {
+            transform: scale(1.4);
+            z-index: 100 !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border-color: var(--soft-cream) !important;
         }
 
         .message-box {
@@ -103,7 +109,7 @@
             margin: 40px 0;
         }
 
-        /* Family Summary Section (4 Photos) */
+        /* Family Summary Section */
         .family-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -122,26 +128,35 @@
         .family-member img {
             width: 100%;
             aspect-ratio: 1/1;
-            object-fit: cover;
+            height: auto;
         }
 
-        .family-member span {
-            display: block;
-            margin-top: 10px;
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-        }
-
-        /* Tilt Effect */
         .family-member:nth-child(odd) { transform: rotate(-2deg); }
         .family-member:nth-child(even) { transform: rotate(2deg); }
 
         .signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--gold);
             margin-top: 40px;
             text-align: center;
+        }
+
+        /* Animation: Hearts */
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            color: #ff4d4d;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
 
         footer {
@@ -154,6 +169,7 @@
         @media (max-width: 600px) {
             .photo-grid { grid-template-columns: repeat(2, 1fr); }
             .cursive-title { font-size: 2.5rem; }
+            .enlarged { transform: scale(1.1); } /* Mobile zoom adjustment */
         }
     </style>
 </head>
@@ -169,7 +185,7 @@
     <div class="container">
 
         <section class="daughter-section">
-            <h2 class="cursive-title">Dearest ALLYSON</p>
+            <h2 class="cursive-title">Dearest ALLYSON</h2>
             <div class="photo-grid">
                 <img src="images/d1/1.jpg" alt="Memory">
                 <img src="images/d1/2.jpg" alt="Memory">
@@ -181,14 +197,14 @@
                 <img src="images/d1/8.jpg" alt="Memory">
             </div>
             <div class="message-box">
-                <p>"Insert a specific sweet message for your first daughter here. Talk about her strength, her beauty, or a favorite memory."</p>
+                <p>"Allyson, seeing your strength and beauty grow every day is my greatest pride. I love you more than words can express."</p>
             </div>
         </section>
 
         <div class="divider">❦</div>
 
         <section class="daughter-section">
-            <h2 class="cursive-title">Dearest ANNABELLE</p>
+            <h2 class="cursive-title">Dearest ANNABELLE</h2>
             <div class="photo-grid">
                 <img src="images/d2/1.jpg" alt="Memory">
                 <img src="images/d2/2.jpg" alt="Memory">
@@ -200,14 +216,14 @@
                 <img src="images/d2/8.jpg" alt="Memory">
             </div>
             <div class="message-box">
-                <p>"Insert a message for your second daughter here. Mention her laughter, her kindness, and how much she means to you."</p>
+                <p>"Annabelle, your laughter and kindness fill our home with so much light. You are a treasure I cherish every day."</p>
             </div>
         </section>
 
         <div class="divider">❦</div>
 
         <section class="daughter-section">
-            <h2 class="cursive-title">Dearest KYLA</p>
+            <h2 class="cursive-title">Dearest KYLA</h2>
             <div class="photo-grid">
                 <img src="images/d3/1.jpg" alt="Memory">
                 <img src="images/d3/2.jpg" alt="Memory">
@@ -219,81 +235,60 @@
                 <img src="images/d3/8.jpg" alt="Memory">
             </div>
             <div class="message-box">
-                <p>"Insert a message for your youngest here. Talk about the joy she brought into the family and your hopes for her."</p>
+                <p>"Kyla, you are the final piece that made our family whole. Your joy is infectious and my love for you is endless."</p>
             </div>
         </section>
 
         <div class="divider">❦</div>
 
-        <section class="daughter-section">
+        <section class="daughter-section" id="summary">
             <h2 class="cursive-title">Four Hearts, One Love</h2>
             <div class="family-grid">
-                <div class="family-member">
-                    <img src="images/summary/mom.jpg" alt="Mom">
-                </div>
-                <div class="family-member">
-                    <img src="images/summary/d1.jpg" alt="Daughter 1">
-                </div>
-                <div class="family-member">
-                    <img src="images/summary/d2.jpg" alt="Daughter 2">
-                </div>
-                <div class="family-member">
-                    <img src="images/summary/d3.jpg" alt="Daughter 3">
-                </div>
+                <div class="family-member"><img src="images/summary/mom.jpg" alt="Mom"></div>
+                <div class="family-member"><img src="images/summary/d1.jpg" alt="Allyson"></div>
+                <div class="family-member"><img src="images/summary/d2.jpg" alt="Annabelle"></div>
+                <div class="family-member"><img src="images/summary/d3.jpg" alt="Kyla"></div>
             </div>
             <div class="message-box">
-                <p>Individually, you are my pride. Together, you are my world. My greatest blessing is being your mother. Watching you three grow together is my life's greatest joy.</p>
+                <p>Individually, you are my pride. Together, you are my world. My greatest blessing is being your mother.</p>
             </div>
-            <h3 class="signature">Happy Valentine's Day, My Loves!</h3>
-            </div>
+            <h3 class="signature">Happy Valentine's Day!</h3>
         </section>
 
-</div>
-    
-    <footer>
-        <p>Created with love by Mom &copy; 2026</p>
-    </footer>
-
-</div>
+    </div>
 
     <footer>
         <p>Made with love &copy; 2026</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="enlargedImg">
-    </div>
-
     <script>
-        // Lightbox Logic
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("enlargedImg");
-        
+        // Image Enlarging Logic
         document.querySelectorAll('img').forEach(img => {
             img.onclick = function() {
-                if(this.classList.contains('modal-content')) return;
-                modal.style.display = "block";
-                modalImg.src = this.src;
+                if (this.classList.contains('enlarged')) {
+                    this.classList.remove('enlarged');
+                } else {
+                    document.querySelectorAll('.enlarged').forEach(el => el.classList.remove('enlarged'));
+                    this.classList.add('enlarged');
+                }
             }
         });
 
-        modal.onclick = function() { modal.style.display = "none"; }
-
-        // Floating Hearts Logic
+        // Heart Creation Logic
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart");
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+            heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 4000);
         }
 
-        // Trigger hearts when user scrolls to summary
+        // Trigger hearts on scroll to summary
         window.onscroll = function() {
-            const summaryPos = document.getElementById("summary").getBoundingClientRect().top;
+            const summary = document.getElementById("summary");
+            const summaryPos = summary.getBoundingClientRect().top;
             if (summaryPos < window.innerHeight) {
                 createHeart();
             }
