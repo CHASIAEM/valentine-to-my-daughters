@@ -11,7 +11,7 @@
             --dark-maroon: #4a0404;
             --gold: #d4af37;
             --soft-cream: #fdf5e6;
-            --overlay: rgba(0, 0, 0, 0.5);
+            --overlay: rgba(0, 0, 0, 0.6);
         }
 
         body {
@@ -21,7 +21,32 @@
             color: var(--soft-cream);
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent; /* Removes blue flash on mobile tap */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Entrance Overlay */
+        #entrance-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--dark-maroon);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .open-btn {
+            background-color: var(--gold);
+            color: var(--dark-maroon);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         /* Hero Section */
@@ -42,41 +67,19 @@
             margin: 0;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+        /* Content Layout */
+        .container { padding: 20px; max-width: 1000px; margin: 0 auto; }
+        .daughter-section { padding: 40px 0; text-align: center; }
+        .cursive-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 8vw, 3.5rem); color: var(--gold); margin-bottom: 20px; }
 
-        .container {
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .daughter-section {
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .cursive-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        /* Photo Grids & Zooming */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-bottom: 25px;
         }
 
-        @media (min-width: 768px) {
-            .photo-grid { grid-template-columns: repeat(4, 1fr); }
-        }
+        @media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(4, 1fr); } }
 
         .photo-grid img, .family-member img {
             width: 100%;
@@ -93,54 +96,20 @@
         /* Mobile-Safe Zoom */
         .enlarged {
             transform: scale(1.15) !important;
-            z-index: 999 !important;
+            z-index: 1000 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             border-color: var(--soft-cream) !important;
         }
 
-        .message-box {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .divider {
-            text-align: center;
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin: 30px 0;
-        }
+        .message-box { font-style: italic; font-size: 1.1rem; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+        .divider { text-align: center; color: var(--gold); font-size: 1.8rem; margin: 30px 0; }
 
         /* Family Summary */
-        .family-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 500px;
-            margin: 30px auto;
-        }
-
-        .family-member {
-            background: var(--soft-cream);
-            padding: 8px 8px 20px 8px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-            color: var(--dark-maroon);
-        }
-
+        .family-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 500px; margin: 30px auto; }
+        .family-member { background: var(--soft-cream); padding: 8px 8px 20px 8px; box-shadow: 0 8px 15px rgba(0,0,0,0.4); color: var(--dark-maroon); }
         .family-member img { height: auto; aspect-ratio: 1/1; }
-
         .family-member:nth-child(odd) { transform: rotate(-2deg); }
         .family-member:nth-child(even) { transform: rotate(2deg); }
-
-        .signature {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-top: 30px;
-        }
 
         /* Floating Hearts */
         .heart {
@@ -158,110 +127,4 @@
             100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
 
-        footer { text-align: center; padding: 40px 20px; opacity: 0.6; font-size: 0.8rem; }
-    </style>
-</head>
-<body>
-
-    <header class="hero">
-        <div>
-            <h1 class="main-title">To My Beautiful Daughters</h1>
-            <p class="subtitle">My Forever Valentines</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <section class="daughter-section">
-            <h2 class="cursive-title">Dearest ALLYSON</h2>
-            <div class="photo-grid">
-                <img src="images/d1/1.jpg" alt="Memory"> <img src="images/d1/2.jpg" alt="Memory">
-                <img src="images/d1/3.jpg" alt="Memory"> <img src="images/d1/4.jpg" alt="Memory">
-                <img src="images/d1/5.jpg" alt="Memory"> <img src="images/d1/6.jpg" alt="Memory">
-                <img src="images/d1/7.jpg" alt="Memory"> <img src="images/d1/8.jpg" alt="Memory">
-            </div>
-            <div class="message-box"><p>"Allyson, seeing your strength and beauty grow every day is my greatest pride."</p></div>
-        </section>
-
-        <div class="divider">❦</div>
-
-        <section class="daughter-section">
-            <h2 class="cursive-title">Dearest ANNABELLE</h2>
-            <div class="photo-grid">
-                <img src="images/d2/1.jpg" alt="Memory"> <img src="images/d2/2.jpg" alt="Memory">
-                <img src="images/d2/3.jpg" alt="Memory"> <img src="images/d2/4.jpg" alt="Memory">
-                <img src="images/d2/5.jpg" alt="Memory"> <img src="images/d2/6.jpg" alt="Memory">
-                <img src="images/d2/7.jpg" alt="Memory"> <img src="images/d2/8.jpg" alt="Memory">
-            </div>
-            <div class="message-box"><p>"Annabelle, your laughter and kindness fill our home with light."</p></div>
-        </section>
-
-        <div class="divider">❦</div>
-
-        <section class="daughter-section">
-            <h2 class="cursive-title">Dearest KYLA</h2>
-            <div class="photo-grid">
-                <img src="images/d3/1.jpg" alt="Memory"> <img src="images/d3/2.jpg" alt="Memory">
-                <img src="images/d3/3.jpg" alt="Memory"> <img src="images/d3/4.jpg" alt="Memory">
-                <img src="images/d3/5.jpg" alt="Memory"> <img src="images/d3/6.jpg" alt="Memory">
-                <img src="images/d3/7.jpg" alt="Memory"> <img src="images/d3/8.jpg" alt="Memory">
-            </div>
-            <div class="message-box"><p>"Kyla, you are the final piece that made our family whole."</p></div>
-        </section>
-
-        <div class="divider">❦</div>
-
-        <section class="daughter-section" id="summary">
-            <h2 class="cursive-title">Four Hearts, One Love</h2>
-            <div class="family-grid">
-                <div class="family-member"><img src="images/summary/mom.jpg" alt="Mom"></div>
-                <div class="family-member"><img src="images/summary/d1.jpg" alt="Allyson"></div>
-                <div class="family-member"><img src="images/summary/d2.jpg" alt="Annabelle"></div>
-                <div class="family-member"><img src="images/summary/d3.jpg" alt="Kyla"></div>
-            </div>
-            <div class="message-box"><p>Individually you are my pride. Together, you are my world.</p></div>
-            <h3 class="signature">Happy Valentine's Day!</h3>
-        </section>
-    </div>
-
-    <footer><p>Created with love by Mom &copy; 2026</p></footer>
-
-    <script>
-        // Mobile-Optimized Zoom
-        document.querySelectorAll('img').forEach(img => {
-            const handleAction = (e) => {
-                if (img.closest('.hero')) return;
-                if (img.classList.contains('enlarged')) {
-                    img.classList.remove('enlarged');
-                } else {
-                    document.querySelectorAll('.enlarged').forEach(el => el.classList.remove('enlarged'));
-                    img.classList.add('enlarged');
-                }
-            };
-            img.addEventListener('click', handleAction);
-        });
-
-        // Hearts Logic
-        let heartInterval;
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 4000);
-        }
-
-        window.addEventListener('scroll', () => {
-            const summary = document.getElementById("summary");
-            const rect = summary.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                if (!heartInterval) heartInterval = setInterval(createHeart, 500);
-            } else {
-                clearInterval(heartInterval);
-                heartInterval = null;
-            }
-        }, { passive: true });
-    </script>
-</body>
-</html>
+        footer { text-align: center; padding: 40px 20px; opacity: 0.6;
