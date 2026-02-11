@@ -21,6 +21,7 @@
             color: var(--soft-cream);
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent; /* Removes blue flash on mobile tap */
         }
 
         /* Hero Section */
@@ -42,12 +43,11 @@
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        /* Content Layout */
         .container {
             padding: 20px;
             max-width: 1000px;
@@ -55,100 +55,99 @@
         }
 
         .daughter-section {
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
         }
 
         .cursive-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
             color: var(--gold);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        /* Photo Grid & Zooming */
+        /* Photo Grids & Zooming */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .photo-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         .photo-grid img, .family-member img {
             width: 100%;
-            height: 280px;
+            height: 200px;
             object-fit: cover;
             border: 2px solid var(--gold);
             border-radius: 4px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            z-index: 1;
             position: relative;
+            z-index: 1;
         }
 
-        /* Zoom effect in-place */
+        /* Mobile-Safe Zoom */
         .enlarged {
-            transform: scale(1.4);
-            z-index: 100 !important;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            transform: scale(1.15) !important;
+            z-index: 999 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             border-color: var(--soft-cream) !important;
         }
 
         .message-box {
             font-style: italic;
-            font-size: 1.3rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.6;
             max-width: 700px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
         .divider {
             text-align: center;
             color: var(--gold);
-            font-size: 2rem;
-            margin: 40px 0;
+            font-size: 1.8rem;
+            margin: 30px 0;
         }
 
-        /* Family Summary Section */
+        /* Family Summary */
         .family-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 600px;
-            margin: 40px auto;
+            gap: 15px;
+            max-width: 500px;
+            margin: 30px auto;
         }
 
         .family-member {
             background: var(--soft-cream);
-            padding: 10px 10px 30px 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            padding: 8px 8px 20px 8px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
             color: var(--dark-maroon);
         }
 
-        .family-member img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            height: auto;
-        }
+        .family-member img { height: auto; aspect-ratio: 1/1; }
 
         .family-member:nth-child(odd) { transform: rotate(-2deg); }
         .family-member:nth-child(even) { transform: rotate(2deg); }
 
         .signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             color: var(--gold);
-            margin-top: 40px;
-            text-align: center;
+            margin-top: 30px;
         }
 
-        /* Animation: Hearts */
+        /* Floating Hearts */
         .heart {
             position: fixed;
             bottom: -50px;
             color: #ff4d4d;
             font-size: 24px;
-            user-select: none;
             pointer-events: none;
             z-index: 999;
             animation: floatUp 4s linear forwards;
@@ -159,18 +158,7 @@
             100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
 
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            .photo-grid { grid-template-columns: repeat(2, 1fr); }
-            .cursive-title { font-size: 2.5rem; }
-            .enlarged { transform: scale(1.1); } /* Mobile zoom adjustment */
-        }
+        footer { text-align: center; padding: 40px 20px; opacity: 0.6; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -183,22 +171,15 @@
     </header>
 
     <div class="container">
-
         <section class="daughter-section">
             <h2 class="cursive-title">Dearest ALLYSON</h2>
             <div class="photo-grid">
-                <img src="images/d1/1.jpg" alt="Memory">
-                <img src="images/d1/2.jpg" alt="Memory">
-                <img src="images/d1/3.jpg" alt="Memory">
-                <img src="images/d1/4.jpg" alt="Memory">
-                <img src="images/d1/5.jpg" alt="Memory">
-                <img src="images/d1/6.jpg" alt="Memory">
-                <img src="images/d1/7.jpg" alt="Memory">
-                <img src="images/d1/8.jpg" alt="Memory">
+                <img src="images/d1/1.jpg" alt="Memory"> <img src="images/d1/2.jpg" alt="Memory">
+                <img src="images/d1/3.jpg" alt="Memory"> <img src="images/d1/4.jpg" alt="Memory">
+                <img src="images/d1/5.jpg" alt="Memory"> <img src="images/d1/6.jpg" alt="Memory">
+                <img src="images/d1/7.jpg" alt="Memory"> <img src="images/d1/8.jpg" alt="Memory">
             </div>
-            <div class="message-box">
-                <p>"Allyson, seeing your strength and beauty grow every day is my greatest pride. I love you more than words can express."</p>
-            </div>
+            <div class="message-box"><p>"Allyson, seeing your strength and beauty grow every day is my greatest pride."</p></div>
         </section>
 
         <div class="divider">❦</div>
@@ -206,18 +187,12 @@
         <section class="daughter-section">
             <h2 class="cursive-title">Dearest ANNABELLE</h2>
             <div class="photo-grid">
-                <img src="images/d2/1.jpg" alt="Memory">
-                <img src="images/d2/2.jpg" alt="Memory">
-                <img src="images/d2/3.jpg" alt="Memory">
-                <img src="images/d2/4.jpg" alt="Memory">
-                <img src="images/d2/5.jpg" alt="Memory">
-                <img src="images/d2/6.jpg" alt="Memory">
-                <img src="images/d2/7.jpg" alt="Memory">
-                <img src="images/d2/8.jpg" alt="Memory">
+                <img src="images/d2/1.jpg" alt="Memory"> <img src="images/d2/2.jpg" alt="Memory">
+                <img src="images/d2/3.jpg" alt="Memory"> <img src="images/d2/4.jpg" alt="Memory">
+                <img src="images/d2/5.jpg" alt="Memory"> <img src="images/d2/6.jpg" alt="Memory">
+                <img src="images/d2/7.jpg" alt="Memory"> <img src="images/d2/8.jpg" alt="Memory">
             </div>
-            <div class="message-box">
-                <p>"Annabelle, your laughter and kindness fill our home with so much light. You are a treasure I cherish every day."</p>
-            </div>
+            <div class="message-box"><p>"Annabelle, your laughter and kindness fill our home with light."</p></div>
         </section>
 
         <div class="divider">❦</div>
@@ -225,18 +200,12 @@
         <section class="daughter-section">
             <h2 class="cursive-title">Dearest KYLA</h2>
             <div class="photo-grid">
-                <img src="images/d3/1.jpg" alt="Memory">
-                <img src="images/d3/2.jpg" alt="Memory">
-                <img src="images/d3/3.jpg" alt="Memory">
-                <img src="images/d3/4.jpg" alt="Memory">
-                <img src="images/d3/5.jpg" alt="Memory">
-                <img src="images/d3/6.jpg" alt="Memory">
-                <img src="images/d3/7.jpg" alt="Memory">
-                <img src="images/d3/8.jpg" alt="Memory">
+                <img src="images/d3/1.jpg" alt="Memory"> <img src="images/d3/2.jpg" alt="Memory">
+                <img src="images/d3/3.jpg" alt="Memory"> <img src="images/d3/4.jpg" alt="Memory">
+                <img src="images/d3/5.jpg" alt="Memory"> <img src="images/d3/6.jpg" alt="Memory">
+                <img src="images/d3/7.jpg" alt="Memory"> <img src="images/d3/8.jpg" alt="Memory">
             </div>
-            <div class="message-box">
-                <p>"Kyla, you are the final piece that made our family whole. Your joy is infectious and my love for you is endless."</p>
-            </div>
+            <div class="message-box"><p>"Kyla, you are the final piece that made our family whole."</p></div>
         </section>
 
         <div class="divider">❦</div>
@@ -249,32 +218,30 @@
                 <div class="family-member"><img src="images/summary/d2.jpg" alt="Annabelle"></div>
                 <div class="family-member"><img src="images/summary/d3.jpg" alt="Kyla"></div>
             </div>
-            <div class="message-box">
-                <p>Individually, you are my pride. Together, you are my world. My greatest blessing is being your mother.</p>
-            </div>
+            <div class="message-box"><p>Individually you are my pride. Together, you are my world.</p></div>
             <h3 class="signature">Happy Valentine's Day!</h3>
         </section>
-
     </div>
 
-    <footer>
-        <p>Made with love &copy; 2026</p>
-    </footer>
+    <footer><p>Created with love by Mom &copy; 2026</p></footer>
 
     <script>
-        // Image Enlarging Logic
+        // Mobile-Optimized Zoom
         document.querySelectorAll('img').forEach(img => {
-            img.onclick = function() {
-                if (this.classList.contains('enlarged')) {
-                    this.classList.remove('enlarged');
+            const handleAction = (e) => {
+                if (img.closest('.hero')) return;
+                if (img.classList.contains('enlarged')) {
+                    img.classList.remove('enlarged');
                 } else {
                     document.querySelectorAll('.enlarged').forEach(el => el.classList.remove('enlarged'));
-                    this.classList.add('enlarged');
+                    img.classList.add('enlarged');
                 }
-            }
+            };
+            img.addEventListener('click', handleAction);
         });
 
-        // Heart Creation Logic
+        // Hearts Logic
+        let heartInterval;
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart");
@@ -285,14 +252,16 @@
             setTimeout(() => { heart.remove(); }, 4000);
         }
 
-        // Trigger hearts on scroll to summary
-        window.onscroll = function() {
+        window.addEventListener('scroll', () => {
             const summary = document.getElementById("summary");
-            const summaryPos = summary.getBoundingClientRect().top;
-            if (summaryPos < window.innerHeight) {
-                createHeart();
+            const rect = summary.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                if (!heartInterval) heartInterval = setInterval(createHeart, 500);
+            } else {
+                clearInterval(heartInterval);
+                heartInterval = null;
             }
-        };
+        }, { passive: true });
     </script>
 </body>
 </html>
