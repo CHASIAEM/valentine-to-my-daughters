@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Three Valentines | Mom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-maroon: #4a0404;
+            --gold: #d4af37;
+            --soft-cream: #fdf5e6;
+            --overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-maroon);
+            color: var(--soft-cream);
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(var(--overlay), var(--overlay)), 
+                        url('images/hero_bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: var(--gold);
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .daughter-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cursive-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        /* Photo Grid (8 Photos) */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.02);
+            border-color: var(--soft-cream);
+        }
+
+        .message-box {
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin: 40px 0;
+        }
+
+        /* Family Summary Section (4 Photos) */
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .family-member {
+            background: var(--soft-cream);
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            color: var(--dark-maroon);
+        }
+
+        .family-member img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        .family-member span {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+        }
+
+        /* Tilt Effect */
+        .family-member:nth-child(odd) { transform: rotate(-2deg); }
+        .family-member:nth-child(even) { transform: rotate(2deg); }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .cursive-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div>
+            <h1 class="main-title">To My Beautiful Daughters</h1>
+            <p class="subtitle">My Forever Valentines</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="daughter-section">
+            <h2 class="cursive-title">Dearest [ALLYSON]</h2>
+            <div class="photo-grid">
+                <img src="images/d1/1.jpg" alt="Memory">
+                <img src="images/d1/2.jpg" alt="Memory">
+                <img src="images/d1/3.jpg" alt="Memory">
+                <img src="images/d1/4.jpg" alt="Memory">
+                <img src="images/d1/5.jpg" alt="Memory">
+                <img src="images/d1/6.jpg" alt="Memory">
+                <img src="images/d1/7.jpg" alt="Memory">
+                <img src="images/d1/8.jpg" alt="Memory">
+            </div>
+            <div class="message-box">
+                <p>"Insert a specific sweet message for your first daughter here. Talk about her strength, her beauty, or a favorite memory."</p>
+            </div>
+        </section>
+
+        <div class="divider">❦</div>
+
+        <section class="daughter-section">
+            <h2 class="cursive-title">Dearest [ANNABELLE]</h2>
+            <div class="photo-grid">
+                <img src="images/d2/1.jpg" alt="Memory">
+                <img src="images/d2/2.jpg" alt="Memory">
+                <img src="images/d2/3.jpg" alt="Memory">
+                <img src="images/d2/4.jpg" alt="Memory">
+                <img src="images/d2/5.jpg" alt="Memory">
+                <img src="images/d2/6.jpg" alt="Memory">
+                <img src="images/d2/7.jpg" alt="Memory">
+                <img src="images/d2/8.jpg" alt="Memory">
+            </div>
+            <div class="message-box">
+                <p>"Insert a message for your second daughter here. Mention her laughter, her kindness, and how much she means to you."</p>
+            </div>
+        </section>
+
+        <div class="divider">❦</div>
+
+        <section class="daughter-section">
+            <h2 class="cursive-title">Dearest [KYLA]</h2>
+            <div class="photo-grid">
+                <img src="images/d3/1.jpg" alt="Memory">
+                <img src="images/d3/2.jpg" alt="Memory">
+                <img src="images/d3/3.jpg" alt="Memory">
+                <img src="images/d3/4.jpg" alt="Memory">
+                <img src="images/d3/5.jpg" alt="Memory">
+                <img src="images/d3/6.jpg" alt="Memory">
+                <img src="images/d3/7.jpg" alt="Memory">
+                <img src="images/d3/8.jpg" alt="Memory">
+            </div>
+            <div class="message-box">
+                <p>"Insert a message for your youngest here. Talk about the joy she brought into the family and your hopes for her."</p>
+            </div>
+        </section>
+
+        <div class="divider">❦</div>
+
+        <section class="daughter-section">
+            <h2 class="cursive-title">Three Hearts, One Love</h2>
+            <div class="family-grid">
+                <div class="family-member">
+                    <img src="images/summary/mom.jpg" alt="Mom">
+                    <span>Mom</span>
+                </div>
+                <div class="family-member">
+                    <img src="images/summary/d1.jpg" alt="Daughter 1">
+                    <span>[Name]</span>
+                </div>
+                <div class="family-member">
+                    <img src="images/summary/d2.jpg" alt="Daughter 2">
+                    <span>[Name]</span>
+                </div>
+                <div class="family-member">
+                    <img src="images/summary/d3.jpg" alt="Daughter 3">
+                    <span>[Name]</span>
+                </div>
+            </div>
+            <div class="message-box">
+                <p>Individually, you are my pride. Together, you are my world. My greatest blessing is being your mother. Watching you three grow together is my life's greatest joy.</p>
+            </div>
+            <h3 class="signature">Happy Valentine's Day, My Loves!</h3>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Created with love by Mom &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
